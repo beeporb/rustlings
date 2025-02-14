@@ -6,5 +6,7 @@ fn call_me(num: u8) {
 
 fn main() {
     // TODO: Fix the function call.
-    call_me();
+    // Solution:
+    // add value to be passed to call_me
+    call_me(7);
 }
