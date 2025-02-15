@@ -46,6 +46,15 @@ impl State {
     fn process(&mut self, message: Message) {
         // TODO: Create a match expression to process the different message
         // variants using the methods defined above.
+        // Solution
+        // Use each of the different enums.
+        match message {
+            Message::Resize { width, height } => self.resize(width, height),
+            Message::Echo(string) => self.echo(string),
+            Message::ChangeColor(red, green ,blue) => self.change_color(red, green, blue),
+            Message::Move(point) => self.move_position(point),
+            Message::Quit => self.quit()
+        }
     }
 }
 
