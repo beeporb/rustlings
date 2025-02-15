@@ -5,6 +5,8 @@ mod delicious_snacks {
     // TODO: Add the following two `use` statements after fixing them.
     // use self::fruits::PEAR as ???;
     // use self::veggies::CUCUMBER as ???;
+    // Solution
+    // We emit the names fruit as veggie as public renames of what's within the private modules.
 
     mod fruits {
         pub const PEAR: &str = "Pear";
@@ -15,6 +17,9 @@ mod delicious_snacks {
         pub const CUCUMBER: &str = "Cucumber";
         pub const CARROT: &str = "Carrot";
     }
+
+    pub use self::fruits::PEAR as fruit;
+    pub use self::veggies::CARROT as veggie;
 }
 
 fn main() {
