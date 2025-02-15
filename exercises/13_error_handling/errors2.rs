@@ -21,9 +21,15 @@ fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let cost_per_item = 5;
 
     // TODO: Handle the error case as described above.
+    // Can also just use ? which automatically propagates the error higher, with the option.
     let qty = item_quantity.parse::<i32>();
 
-    Ok(qty * cost_per_item + processing_fee)
+    match qty {
+        Err(e) => Err(e),
+        Ok(val) => Ok(val * cost_per_item + processing_fee)
+    }
+
+    // Ok(qty * cost_per_item + processing_fee)
 }
 
 fn main() {
@@ -45,6 +51,7 @@ mod tests {
         assert_eq!(
             total_cost("beep boop").unwrap_err().kind(),
             &IntErrorKind::InvalidDigit,
+
         );
     }
 }
